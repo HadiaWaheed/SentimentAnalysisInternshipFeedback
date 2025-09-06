@@ -47,7 +47,6 @@ SentimentAnalysisInternshipFeedback/
 │   ├── result.html
 │   └── insights.html
 │── dataset.csv           # Feedback dataset
-│── requirements.txt      # Project dependencies
 │── README.md             # Project documentation
 ```
 
@@ -81,7 +80,7 @@ SentimentAnalysisInternshipFeedback/
 | ----------- | --------------------------------------------- | ----------------------------- | -------------- | ------------------- | ------------------- |
 | Hadia       | [hadia@example.com](mailto:hadia@example.com) | The internship was amazing!   | Great learning | Positive            | 2025-09-06 12:45:23 |
 | Anonymous   |                                               | It was okay, nothing special. |                | Neutral             | 2025-09-06 12:46:11 |
-| Hacker        | [ali@example.com](mailto:ali@example.com)     | Not helpful at all.           |                | Negative            | 2025-09-06 12:47:02 |
+| Hacker        | [hacker@example.com](mailto:ali@example.com)     | Not helpful at all.           |                | Negative            | 2025-09-06 12:47:02 |
 
 ---
 
