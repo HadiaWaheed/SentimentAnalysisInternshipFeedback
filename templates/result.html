@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5 text-center">
+                    <h2 class="mb-4 text-dark">📊 Sentiment Analysis Result</h2>
+
+                    <div class="mb-4">
+                        <h4 class="fw-bold">
+                            Predicted Sentiment: 
+                            <span class="
+                                {% if label == 'Positive' %} text-success 
+                                {% elif label == 'Negative' %} text-danger 
+                                {% else %} text-warning {% endif %}
+                            ">
+                                {{ label }}
+                            </span>
+                        </h4>
+                        <p class="lead">Confidence: <span class="fw-bold">{{ confidence }}</span></p>
+                    </div>
+
+                    <div class="alert alert-light border rounded-3 shadow-sm mb-4">
+                        <h5 class="fw-semibold">Your Feedback:</h5>
+                        <blockquote class="blockquote">
+                            <p class="mb-0 fst-italic">“{{ feedback }}”</p>
+                        </blockquote>
+                        {% if review %}
+                        <small class="text-muted">Additional Review: {{ review }}</small>
+                        {% endif %}
+                    </div>
+
+                    {% if tips %}
+                        <div class="tips text-start">
+                            <h5 class="fw-semibold mb-3">💡 Improvement Suggestions:</h5>
+                            <ul class="list-group list-group-flush">
+                                {% for tip in tips %}
+                                    <li class="list-group-item">{{ tip }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <div class="mt-4 d-flex justify-content-center">
+                        <a href="/" class="btn btn-primary px-4 rounded-3 shadow-sm">🔄 Submit Another Feedback</a>
+                        <a href="/insights" class="btn btn-outline-secondary ms-2 px-4 rounded-3 shadow-sm">📈 View Insights</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

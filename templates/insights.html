@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center text-primary">📊 Sentiment Distribution</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6"> <!-- Chart ab chhota ho gaya (6 columns) -->
+            <div class="card shadow-sm border-0 rounded-4 mb-4">
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height:250px; width:100%">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Feedback Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body">
+                    <h2 class="mb-4 text-center text-dark">📝 Recent Feedback</h2>
+                    {% if recent_feedback %}
+                        <ul class="list-group list-group-flush">
+                            {% for fb in recent_feedback %}
+                                <li class="list-group-item">
+                                    <strong>{{ fb["intern_name"] if fb["intern_name"] else "Anonymous" }}</strong>:
+                                    {{ fb["feedback"] }}
+                                    {% if fb["review"] %}
+                                        <br><small class="text-muted">Review: {{ fb["review"] }}</small>
+                                    {% endif %}
+                                    <span class="badge bg-secondary float-end">{{ fb["predicted_sentiment"] }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">No feedback available yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Jinja2 data injected from backend
+    const chartData = {{ counts_json|safe }};  
+
+    const ctx = document.getElementById('sentimentChart').getContext('2d');
+    const sentimentChart = new Chart(ctx, {
+        type: 'doughnut',   // Doughnut for compact look
+        data: {
+            labels: Object.keys(chartData), // <-- safe, no underline
+            datasets: [{
+                label: 'Sentiment Count',
+                data: Object.values(chartData),
+                backgroundColor: ['#4caf50', '#f44336', '#ffc107'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}
