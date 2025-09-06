@@ -147,7 +147,6 @@ Go to 👉 `http://127.0.0.1:5000/`
 
 * 🚀 Machine Learning Enthusiast
 * 💡 Cybersecurity & AI Explorer
-* 🌐 [LinkedIn Profile](https://www.linkedin.com/in/hadia-waheed)
+* 🌐 [LinkedIn Profile](https://www.linkedin.com/in/hadia-waheed-1647892aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
 
-Do you want me to also make a **requirements.txt** file ready for you (so GitHub users can run your project easily)?
